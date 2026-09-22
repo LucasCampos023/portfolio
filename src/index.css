@@ -1,0 +1,227 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------
+   Preto, cinza e ciano — mas o ciano é TINTA TÉCNICA, não neon:
+   entra em linhas de 1px, cotas, rótulos e estados ativos.
+   Nunca em gradiente de texto, nunca em glow difuso.
+--------------------------------------------------------------- */
+@theme {
+  --color-ink: #0a0a0b;
+  --color-ink-2: #101013;
+  --color-ink-3: #16161a;
+  --color-line: #26262c;
+  --color-line-soft: #1b1b20;
+
+  --color-chalk: #e8e8ea;
+  --color-ash: #8c8c96;
+  --color-ash-dim: #5c5c66;
+
+  --color-cyan: #00d9ff;
+  --color-cyan-dim: #0a7f96;
+
+  --font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --animate-ticker: ticker 48s linear infinite;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+:root {
+  --bg: var(--color-ink);
+  --bg-raised: var(--color-ink-2);
+  --bg-sunk: #060607;
+  --rule: var(--color-line);
+  --rule-soft: var(--color-line-soft);
+  --fg: var(--color-chalk);
+  --fg-dim: var(--color-ash);
+  --fg-faint: var(--color-ash-dim);
+  --accent: var(--color-cyan);
+  --on-accent: #00181e;
+  color-scheme: dark;
+}
+
+/* Tema claro = papel técnico. O ciano escurece para aguentar o branco. */
+:root[data-theme='light'] {
+  --bg: #eceae5;
+  --bg-raised: #f5f3ef;
+  --bg-sunk: #ddd9d2;
+  --rule: #c9c4ba;
+  --rule-soft: #d8d4cc;
+  --fg: #121214;
+  --fg-dim: #56565e;
+  --fg-faint: #85858e;
+  --accent: #006680;
+  --on-accent: #ffffff;
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: var(--rule);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-display);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-sunk);
+    border-left: 1px solid var(--rule);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--rule);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+
+  /* Foco visível e quadrado — combina com o resto e é exigência de a11y. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------
+   Vocabulário de desenho técnico
+--------------------------------------------------------------- */
+
+/** Rótulo mono em caixa alta — o "carimbo" que aparece nos cantos. */
+@utility stamp {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+@utility rule-h {
+  height: 1px;
+  background: var(--rule);
+}
+
+/** Papel milimetrado. Duas escalas sobrepostas, como folha de engenharia. */
+@utility blueprint {
+  background-image: linear-gradient(var(--rule-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule-soft) 1px, transparent 1px),
+    linear-gradient(var(--rule-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule-soft) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -1px -1px;
+}
+
+/** Caixa de conteúdo: canto vivo, uma linha, sem sombra e sem blur. */
+@utility panel {
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+}
+
+@utility dim {
+  color: var(--fg-dim);
+}
+
+@utility faint {
+  color: var(--fg-faint);
+}
+
+/** Título display: caps, peso alto, tracking negativo. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+
+/** Corpo de texto em serifa — é o que tira o ar de dashboard genérico. */
+@utility prose-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+/* Marcas de canto: quatro cantos em L, como mira de enquadramento. */
+.corners {
+  position: relative;
+}
+.corners::before,
+.corners::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--accent);
+  pointer-events: none;
+}
+.corners::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.corners::after {
+  right: -1px;
+  bottom: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* Régua: traços numerados, desenhada só com repeating-linear-gradient. */
+.ruler-x {
+  height: 18px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--rule) 0 1px,
+    transparent 1px 20px
+  );
+  border-bottom: 1px solid var(--rule);
+}
+
+.ruler-y {
+  width: 18px;
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--rule) 0 1px,
+    transparent 1px 20px
+  );
+  border-right: 1px solid var(--rule);
+}
