@@ -137,12 +137,22 @@ export function Contact() {
               href={social.href}
               target="_blank"
               rel="noreferrer noopener"
-              className="group flex items-baseline justify-between gap-4 border-t py-6 transition-colors hover:text-[var(--accent)]"
+              className={cn(
+                'group flex items-baseline justify-between gap-4 border-t py-6 transition-colors hover:text-[var(--accent)]',
+                // O canal que realmente responde fica em destaque; os outros
+                // são perfis, não caixa de entrada.
+                social.primary && 'border-t-[var(--accent)] text-[var(--accent)]',
+              )}
             >
               <span className="display text-2xl sm:text-3xl">
                 {social.label}
               </span>
-              <span className="font-mono text-xs dim transition-colors group-hover:text-[var(--accent)]">
+              <span
+                className={cn(
+                  'font-mono text-xs transition-colors group-hover:text-[var(--accent)]',
+                  social.primary ? 'text-[var(--accent)]' : 'dim',
+                )}
+              >
                 {social.handle} ↗
               </span>
             </a>

@@ -146,7 +146,7 @@ const resources = {
       },
       contact: {
         title: 'Falar comigo',
-        sub: 'O formulário valida com Zod mas não envia — ainda não tem servidor, e eu prefiro dizer isso a fingir que enviou.',
+        sub: 'O formulário valida com Zod mas não envia — ainda não tem servidor, e eu prefiro dizer isso a fingir que enviou. Para falar comigo de verdade, chama no WhatsApp.',
         name: 'Nome',
         email: 'E-mail',
         message: 'Mensagem',
@@ -162,6 +162,7 @@ const resources = {
         actions: 'Ações',
         theme: 'Inverter tema',
         lang: 'Trocar idioma',
+        whatsapp: 'Chamar no WhatsApp',
         github: 'Abrir o GitHub',
         empty: 'Nada encontrado',
         hint: 'abrir',
@@ -313,7 +314,7 @@ const resources = {
       },
       contact: {
         title: 'Get in touch',
-        sub: 'The form validates with Zod but does not send — there is no server yet, and I would rather say so than fake a success message.',
+        sub: 'The form validates with Zod but does not send — there is no server yet, and I would rather say so than fake a success message. To actually reach me, use WhatsApp.',
         name: 'Name',
         email: 'Email',
         message: 'Message',
@@ -329,6 +330,7 @@ const resources = {
         actions: 'Actions',
         theme: 'Invert theme',
         lang: 'Switch language',
+        whatsapp: 'Message on WhatsApp',
         github: 'Open GitHub',
         empty: 'Nothing found',
         hint: 'open',

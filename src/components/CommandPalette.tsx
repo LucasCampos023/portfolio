@@ -68,6 +68,16 @@ export function CommandPalette() {
         },
       },
       {
+        id: 'whatsapp',
+        label: t('palette.whatsapp'),
+        group: 'actions',
+        hint: '↗',
+        run: () => {
+          window.open('https://wa.me/5515996940984', '_blank', 'noopener')
+          setPaletteOpen(false)
+        },
+      },
+      {
         id: 'github',
         label: t('palette.github'),
         group: 'actions',

@@ -14,6 +14,13 @@ export const profile = {
 
 export const socials = [
   {
+    label: 'WhatsApp',
+    // wa.me abre a conversa direto, no app ou no web, sem precisar salvar o contato.
+    href: 'https://wa.me/5515996940984',
+    handle: '+55 15 99694-0984',
+    primary: true,
+  },
+  {
     label: 'GitHub',
     href: 'https://github.com/LucasCampos023',
     handle: 'LucasCampos023',
