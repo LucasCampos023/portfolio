@@ -9,7 +9,8 @@ const links = [
   { id: 'work', n: '02' },
   { id: 'tools', n: '03' },
   { id: 'lab', n: '04' },
-  { id: 'contact', n: '05' },
+  { id: 'terminal', n: '05' },
+  { id: 'contact', n: '06' },
 ] as const
 
 export function Nav() {

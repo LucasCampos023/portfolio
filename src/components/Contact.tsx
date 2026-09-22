@@ -45,7 +45,7 @@ export function Contact() {
     )
 
   return (
-    <Section id="contact" n="05" title={t('contact.title')} sub={t('contact.sub')}>
+    <Section id="contact" n="06" title={t('contact.title')} sub={t('contact.sub')}>
       <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
         <div className="panel p-6 sm:p-8">
           <AnimatePresence mode="wait">

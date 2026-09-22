@@ -8,8 +8,8 @@ export const profile = {
   handle: 'LucasCampos023',
   role: 'Desenvolvedor',
   location: 'Brasil',
-  /** Ano em que começou a programar — TODO(Lucas): ajuste se não for esse. */
-  since: 2024,
+  /** Conta do GitHub criada em fevereiro de 2025 — ajuste se começou antes. */
+  since: 2025,
 }
 
 export const socials = [
@@ -39,7 +39,49 @@ export const projectNotes: Record<
     en: 'Web interface for personal finance. First published project — handwritten HTML, CSS and JavaScript, no framework.',
     stack: ['HTML', 'CSS', 'JavaScript'],
   },
+  portfolio: {
+    pt: 'Este site. Three.js com shader próprio, Web Worker, terminal interativo e conteúdo puxado da API do GitHub — nada de projeto inventado.',
+    en: 'This site. Three.js with a custom shader, Web Worker, interactive terminal and content pulled from the GitHub API — no invented projects.',
+    stack: ['React', 'TypeScript', 'Three.js', 'Vite'],
+  },
 }
+
+/**
+ * Repositórios privados. A API pública não os devolve, então ficam aqui —
+ * listados sem link, e marcados como privados na interface. É melhor dizer
+ * "existe e é fechado" do que deixar o trabalho invisível.
+ */
+export interface PrivateProject {
+  name: string
+  language: string
+  pt: string
+  en: string
+  stack: string[]
+}
+
+export const privateProjects: PrivateProject[] = [
+  {
+    name: 'fullstack-crud',
+    language: 'JavaScript',
+    pt: 'API REST de produtos em Express com MySQL, separada em model e repository, mais um frontend em JavaScript puro. SQL parametrizado em todas as consultas.',
+    en: 'Product REST API in Express with MySQL, split into model and repository, plus a vanilla JavaScript frontend. Parameterized SQL throughout.',
+    stack: ['Node.js', 'Express', 'MySQL', 'JavaScript'],
+  },
+  {
+    name: 'PentestAI',
+    language: 'Python',
+    pt: 'Estudos de segurança ofensiva em Python.',
+    en: 'Offensive security studies in Python.',
+    stack: ['Python'],
+  },
+  {
+    name: 'Média Aritmética',
+    language: 'JavaScript',
+    pt: 'Sistema de back-end para cálculo de média escolar.',
+    en: 'Back-end system for computing school grade averages.',
+    stack: ['JavaScript'],
+  },
+]
 
 /** Este site. Entra na lista junto com os repositórios da API. */
 export const thisSite = {
@@ -56,17 +98,26 @@ export const thisSite = {
  */
 export type ToolStatus = 'diario' | 'aprendendo' | 'fila'
 
+/**
+ * Cada item aqui tem lastro em repositório: JavaScript e HTML no Finan.AI,
+ * Node/Express/MySQL no fullstack-crud, Python no PentestAI, TypeScript e
+ * React neste site. TODO(Lucas): mova de status conforme for usando.
+ */
 export const tools: { name: string; status: ToolStatus }[] = [
   { name: 'HTML', status: 'diario' },
   { name: 'CSS', status: 'diario' },
   { name: 'JavaScript', status: 'diario' },
   { name: 'Git', status: 'diario' },
+  { name: 'Node.js', status: 'diario' },
+  { name: 'Express', status: 'diario' },
+  { name: 'MySQL', status: 'diario' },
   { name: 'React', status: 'aprendendo' },
   { name: 'TypeScript', status: 'aprendendo' },
+  { name: 'Python', status: 'aprendendo' },
   { name: 'Tailwind', status: 'aprendendo' },
-  { name: 'Node.js', status: 'fila' },
-  { name: 'SQL', status: 'fila' },
   { name: 'Three.js', status: 'fila' },
+  { name: 'Docker', status: 'fila' },
+  { name: 'Testes automatizados', status: 'fila' },
 ]
 
 export const statusLabel: Record<ToolStatus, { pt: string; en: string }> = {

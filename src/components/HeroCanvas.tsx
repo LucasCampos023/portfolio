@@ -114,6 +114,22 @@ function Terrain() {
     material.uniforms.uTime.value += reduced ? delta * 0.08 : delta
     material.uniforms.uPointer.value.lerp(state.pointer, 0.05)
 
+    // Voo de câmera guiado pelo scroll: no topo da página a vista é rasante
+    // e distante; conforme a pessoa rola, a câmera desce e avança sobre o
+    // relevo. É parallax dentro da cena 3D, não translateY no elemento.
+    if (!reduced) {
+      const progress = Math.min(window.scrollY / window.innerHeight, 1)
+      const camera = state.camera
+
+      const targetY = 3.1 - progress * 2.4
+      const targetZ = 11 - progress * 5.2
+
+      camera.position.y += (targetY - camera.position.y) * 0.08
+      camera.position.z += (targetZ - camera.position.z) * 0.08
+      camera.position.x += (state.pointer.x * 0.5 - camera.position.x) * 0.03
+      camera.lookAt(0, -0.4 - progress * 0.6, -4)
+    }
+
     // No papel claro o ciano elétrico some: escurece a linha e reforça o traço.
     const dark = theme === 'dark'
     const color = material.uniforms.uColor.value as THREE.Color

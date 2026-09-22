@@ -14,9 +14,20 @@ const resources = {
         work: 'Repositórios',
         tools: 'Ferramentas',
         lab: 'Laboratório',
+        terminal: 'Terminal',
         contact: 'Contato',
         menu: 'Menu',
         menuLabel: 'Abrir menu de navegação',
+      },
+      terminal: {
+        title: 'Shell',
+        sub: 'Um terminal de verdade, não uma imagem. Tem histórico nas setas, Tab completa o comando e `repos` lê o mesmo cache da API que a página usa.',
+      },
+      xray: {
+        title: 'Modo raio-X',
+        nodes: 'nós no DOM',
+        depth: 'profundidade',
+        off: 'desligar',
       },
       hero: {
         role: 'Desenvolvedor',
@@ -34,8 +45,8 @@ const resources = {
       },
       about: {
         title: 'Onde eu estou agora',
-        p1: 'Estou no começo e não faz sentido fingir o contrário. O que tem aqui é o que existe: um repositório publicado, este site, e a lista honesta do que eu uso e do que ainda estou aprendendo.',
-        p2: 'A escolha de deixar tudo aberto é de propósito. Dá para ver o commit, ler o código e julgar pelo que está lá — não pela descrição.',
+        p1: 'Estou no começo e não faz sentido fingir o contrário. O que tem aqui é o que existe: uma API em Express com MySQL, estudos de segurança em Python, uma interface de finanças em JavaScript puro e este site.',
+        p2: 'O que dá para abrir, fica aberto. Dá para ler o commit, ler o código e julgar pelo que está lá — não pela descrição. O resto está listado como privado, sem link, mas sem sumir da conta.',
         note: 'Os números abaixo vêm da API do GitHub, ao vivo. Não são digitados à mão.',
         repos: 'repositórios públicos',
         since: 'conta criada em',
@@ -52,8 +63,8 @@ const resources = {
         loading: 'Consultando a API…',
         updated: 'atualizado',
         thisSite: 'este site',
-        slot: 'Vago',
-        slotNote: 'O próximo projeto entra aqui.',
+        private: 'privado',
+        noLink: 'repositório fechado',
       },
       tools: {
         title: 'O que eu uso',
@@ -90,6 +101,7 @@ const resources = {
           desc: 'Tema e idioma sobrevivem ao reload. Teste: recarregue.',
           visited: 'seções vistas',
         },
+        conway: 'fundo: jogo da vida de conway (1970) — passe o mouse para semear',
       },
       contact: {
         title: 'Falar comigo',
@@ -128,9 +140,20 @@ const resources = {
         work: 'Repositories',
         tools: 'Tools',
         lab: 'Lab',
+        terminal: 'Terminal',
         contact: 'Contact',
         menu: 'Menu',
         menuLabel: 'Open navigation menu',
+      },
+      terminal: {
+        title: 'Shell',
+        sub: 'A real terminal, not a picture of one. Arrows walk the history, Tab completes, and `repos` reads the same API cache the page uses.',
+      },
+      xray: {
+        title: 'X-ray mode',
+        nodes: 'DOM nodes',
+        depth: 'depth',
+        off: 'turn off',
       },
       hero: {
         role: 'Developer',
@@ -148,8 +171,8 @@ const resources = {
       },
       about: {
         title: 'Where I am right now',
-        p1: 'I am at the beginning and there is no point pretending otherwise. What is here is what exists: one published repository, this site, and an honest list of what I use and what I am still learning.',
-        p2: 'Keeping everything open is deliberate. You can read the commits, read the code, and judge by what is there — not by the description.',
+        p1: 'I am at the beginning and there is no point pretending otherwise. What is here is what exists: an Express API with MySQL, security studies in Python, a personal finance interface in vanilla JavaScript, and this site.',
+        p2: 'Whatever can be open, stays open. You can read the commits, read the code, and judge by what is there — not by the description. The rest is listed as private, without a link, but not hidden from the count.',
         note: 'The numbers below come from the GitHub API, live. They are not typed in by hand.',
         repos: 'public repositories',
         since: 'account created',
@@ -166,8 +189,8 @@ const resources = {
         loading: 'Querying the API…',
         updated: 'updated',
         thisSite: 'this site',
-        slot: 'Vacant',
-        slotNote: 'The next project goes here.',
+        private: 'private',
+        noLink: 'closed repository',
       },
       tools: {
         title: 'What I use',
@@ -204,6 +227,7 @@ const resources = {
           desc: 'Theme and language survive a reload. Try it: refresh.',
           visited: 'sections seen',
         },
+        conway: "background: conway's game of life (1970) — hover to seed",
       },
       contact: {
         title: 'Get in touch',

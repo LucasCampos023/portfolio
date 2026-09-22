@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import { fetchRepos, type Repo } from '@/lib/github'
-import { projectNotes, thisSite } from '@/data/content'
+import { privateProjects, projectNotes } from '@/data/content'
 import { useAppStore } from '@/store/useAppStore'
 import { Section } from './Section'
 
@@ -144,31 +144,47 @@ export function Work() {
             />
           ))}
 
-          {/* Este site também é um projeto — e está aqui porque é verdade. */}
-          <Row
-            index={String(data.length + 1).padStart(2, '0')}
-            title={thisSite.name}
-            description={thisSite[lang]}
-            stack={thisSite.stack}
-            meta={t('work.thisSite')}
-            href={thisSite.href}
-            tag={t('work.thisSite')}
-          />
+          {/* Repositórios fechados: sem link, mas contados. */}
+          {privateProjects.map((project, index) => (
+            <div
+              key={project.name}
+              className="grid gap-4 border-t px-1 py-7 sm:grid-cols-[auto_1fr_auto] sm:gap-8 sm:px-3"
+            >
+              <span className="stamp pt-1.5 sm:w-10">
+                {String(data.length + 1 + index).padStart(2, '0')}
+              </span>
 
-          {/* Slot vago: honesto e, de quebra, é um convite. */}
-          <div className="grid gap-4 border-t border-dashed px-1 py-7 sm:grid-cols-[auto_1fr] sm:gap-8 sm:px-3">
-            <span className="stamp pt-1.5 sm:w-10">
-              {String(data.length + 2).padStart(2, '0')}
-            </span>
-            <div>
-              <h3 className="display text-2xl faint sm:text-3xl">
-                {t('work.slot')}
-              </h3>
-              <p className="prose-serif mt-2.5 text-base faint">
-                {t('work.slotNote')}
-              </p>
+              <div>
+                <div className="flex flex-wrap items-baseline gap-3">
+                  <h3 className="display text-2xl dim sm:text-3xl">
+                    {project.name}
+                  </h3>
+                  <span className="border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-widest faint">
+                    {t('work.private')}
+                  </span>
+                </div>
+
+                <p className="prose-serif mt-2.5 max-w-xl text-base leading-relaxed dim">
+                  {project[lang]}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
+                  {project.stack.map((item) => (
+                    <span
+                      key={item}
+                      className="font-mono text-[11px] uppercase tracking-wider faint"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <span className="stamp whitespace-nowrap">
+                {t('work.noLink')}
+              </span>
             </div>
-          </div>
+          ))}
         </div>
       )}
     </Section>

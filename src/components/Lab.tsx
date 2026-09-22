@@ -5,6 +5,8 @@ import type { PrimeResponse } from '@/workers/primes.worker'
 import { fetchRepos } from '@/lib/github'
 import { useAppStore } from '@/store/useAppStore'
 import { Section } from './Section'
+import { Tilt } from './Tilt'
+import { GameOfLife } from './GameOfLife'
 import { cn } from '@/lib/utils'
 
 function Panel({
@@ -19,18 +21,22 @@ function Panel({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-col panel">
-      <div className="flex items-start justify-between gap-3 border-b p-5">
-        <div>
-          <h3 className="font-mono text-sm uppercase tracking-wider">
-            {title}
-          </h3>
-          <p className="prose-serif mt-1.5 text-sm leading-snug dim">{desc}</p>
+    <Tilt className="group h-full" max={6}>
+      <div className="flex h-full flex-col panel">
+        <div className="flex items-start justify-between gap-3 border-b p-5">
+          <div>
+            <h3 className="font-mono text-sm uppercase tracking-wider">
+              {title}
+            </h3>
+            <p className="prose-serif mt-1.5 text-sm leading-snug dim">
+              {desc}
+            </p>
+          </div>
+          <span className="stamp shrink-0">{n}</span>
         </div>
-        <span className="stamp shrink-0">{n}</span>
+        <div className="flex flex-1 flex-col justify-end p-5">{children}</div>
       </div>
-      <div className="flex flex-1 flex-col justify-end p-5">{children}</div>
-    </div>
+    </Tilt>
   )
 }
 
@@ -289,13 +295,24 @@ export function Lab() {
   const { t } = useTranslation()
 
   return (
-    <Section id="lab" n="04" title={t('lab.title')} sub={t('lab.sub')}>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <WorkerPanel />
-        <AudioPanel />
-        <QueryPanel />
-        <StoragePanel />
+    <div className="relative">
+      {/* Jogo da Vida atrás dos painéis: passe o mouse e você semeia células. */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-auto h-full w-full [mask-image:radial-gradient(ellipse_at_center,transparent_35%,black_85%)]">
+          <GameOfLife />
+        </div>
       </div>
-    </Section>
+
+      <Section id="lab" n="04" title={t('lab.title')} sub={t('lab.sub')}>
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <WorkerPanel />
+          <AudioPanel />
+          <QueryPanel />
+          <StoragePanel />
+        </div>
+
+        <p className="stamp mt-6 text-right">{t('lab.conway')}</p>
+      </Section>
+    </div>
   )
 }

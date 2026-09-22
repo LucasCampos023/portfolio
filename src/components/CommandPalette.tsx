@@ -28,7 +28,14 @@ export function CommandPalette() {
       setPaletteOpen(false)
     }
 
-    const sections = ['about', 'work', 'tools', 'lab', 'contact'] as const
+    const sections = [
+      'about',
+      'work',
+      'tools',
+      'lab',
+      'terminal',
+      'contact',
+    ] as const
 
     return [
       ...sections.map((id, index) => ({

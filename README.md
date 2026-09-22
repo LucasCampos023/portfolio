@@ -47,7 +47,31 @@ dado.
 **3D** — Three.js + React Three Fiber com shader GLSL autoral: um terreno de
 linhas de contorno deformado por soma de senos, com uma depressão que segue o
 ponteiro. Tudo no vertex shader; a CPU só passa tempo e posição do mouse.
-A cor da linha acompanha o tema.
+A cor da linha acompanha o tema. A **câmera é guiada pelo scroll** — desce e
+avança sobre o relevo conforme a página rola, que é parallax dentro da cena,
+não `translateY` no elemento.
+
+**Terminal** (`#terminal`) — um shell de verdade, não uma imagem de um. Tem
+histórico nas setas, `Tab` completa comandos, `Ctrl+L` limpa. O comando `repos`
+lê o **mesmo cache TanStack Query** que alimenta a seção de repositórios, então
+a resposta é a API, não texto decorado. Tem `neofetch`, e `sudo` responde o que
+você espera.
+
+**Jogo da Vida** — o autômato celular do Conway (1970) roda como plano de fundo
+do laboratório: vizinhança de Moore com as bordas ligadas em toro, para os
+planadores atravessarem sem morrer na parede. Passe o mouse e você semeia
+células. Pausa sozinho quando sai da viewport.
+
+**Easter egg** — ↑ ↑ ↓ ↓ ← → ← → B A liga o **modo raio-X**, que contorna cada
+caixa da página e abre um HUD com a contagem real de nós do DOM e a
+profundidade da árvore. É a piada coerente com o resto: um site desenhado como
+planta técnica que, no comando certo, mostra as próprias linhas de construção.
+`Esc` desliga.
+
+**Tilt 3D** — os painéis do laboratório inclinam seguindo o ponteiro, com um
+brilho que acompanha o cursor. A perspectiva fica no elemento de fora e a
+rotação no de dentro; juntas no mesmo nó, o ponto de fuga giraria junto e o
+efeito entortaria.
 
 **Animação** — Motion (parallax de scroll, progresso da barra, transições da
 paleta) e GSAP + ScrollTrigger + SplitText (o título do "Sobre" entra palavra a

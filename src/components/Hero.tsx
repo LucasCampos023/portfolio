@@ -85,7 +85,7 @@ export function Hero() {
         <div>
           <div className="mb-6 flex items-center gap-4">
             <span className="stamp">
-              {t('hero.sheet')} 01 / 05
+              {t('hero.sheet')} 01 / 06
             </span>
             <span className="stamp text-[var(--accent)]">{t('hero.role')}</span>
             <span className="h-px flex-1 bg-[var(--rule)]" />

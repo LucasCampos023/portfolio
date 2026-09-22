@@ -9,8 +9,10 @@ import { About } from '@/components/About'
 import { Work } from '@/components/Work'
 import { Tools } from '@/components/Tools'
 import { Lab } from '@/components/Lab'
+import { Terminal } from '@/components/Terminal'
 import { Contact } from '@/components/Contact'
 import { Footer } from '@/components/Footer'
+import { Xray } from '@/components/Xray'
 import { useAppStore } from '@/store/useAppStore'
 
 const queryClient = new QueryClient({
@@ -39,6 +41,7 @@ export default function App() {
         <Cursor />
         <Nav />
         <CommandPalette />
+        <Xray />
 
         <main className="pt-[57px]">
           <Hero />
@@ -46,6 +49,7 @@ export default function App() {
           <Work />
           <Tools />
           <Lab />
+          <Terminal />
           <Contact />
         </main>
 

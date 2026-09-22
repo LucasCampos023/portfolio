@@ -205,6 +205,38 @@
   border-top: 0;
 }
 
+/* ---------------------------------------------------------------
+   Modo raio-X (Konami Code). Revela a estrutura da página como se
+   fosse a planta por trás do desenho: cada caixa ganha contorno e
+   os elementos de texto recebem uma marcação mais forte.
+--------------------------------------------------------------- */
+:root[data-xray='on'] * {
+  outline: 1px solid color-mix(in oklab, var(--accent) 28%, transparent);
+  outline-offset: -1px;
+}
+
+:root[data-xray='on'] h1,
+:root[data-xray='on'] h2,
+:root[data-xray='on'] h3,
+:root[data-xray='on'] img,
+:root[data-xray='on'] canvas,
+:root[data-xray='on'] svg {
+  outline-color: color-mix(in oklab, var(--accent) 75%, transparent);
+}
+
+:root[data-xray='on'] body {
+  background-image: linear-gradient(
+      color-mix(in oklab, var(--accent) 7%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--accent) 7%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 20px 20px;
+}
+
 /* Régua: traços numerados, desenhada só com repeating-linear-gradient. */
 .ruler-x {
   height: 18px;
