@@ -51,6 +51,16 @@ export const projectNotes: Record<
     en: 'This site. Three.js with a custom shader, Web Worker, interactive terminal and content pulled from the GitHub API — no invented projects.',
     stack: ['React', 'TypeScript', 'Three.js', 'Vite'],
   },
+  'template-construtora': {
+    pt: 'Site institucional para construtora, com vídeo do hero controlado por scroll (scroll-scrubbing) e formulário que abre o WhatsApp. Versão white-label de um projeto de cliente real — nenhum nome, foto ou contato original ficou no código.',
+    en: 'Institutional site for a construction company, with a scroll-scrubbed hero video and a WhatsApp-opening form. White-label version of a real client project — no original name, photo or contact remains in the code.',
+    stack: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+  },
+  'template-consultoria': {
+    pt: 'Site institucional para consultoria, com animações de entrada por seção e formulário que monta a mensagem e abre o WhatsApp. Versão white-label de um projeto de cliente real, pelo mesmo motivo do anterior.',
+    en: 'Institutional site for a consultancy, with per-section entrance animations and a form that assembles the message and opens WhatsApp. White-label version of a real client project, same reasoning as above.',
+    stack: ['HTML', 'CSS', 'JavaScript'],
+  },
 }
 
 /**
