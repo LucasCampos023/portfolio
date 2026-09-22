@@ -180,8 +180,19 @@ function AudioPanel() {
       g.clearRect(0, 0, width, height)
 
       // Barras finas com folga de 1px: leitura de analisador, não equalizador.
+      // O degradê ciano → âmbar corre no eixo da frequência, então a cor
+      // diz em que região do espectro a barra está. Ler os tokens a cada
+      // quadro é barato e faz o canvas acompanhar a troca de tema sozinho.
       const step = width / bins.length
-      g.fillStyle = '#00d9ff'
+      const root = getComputedStyle(document.documentElement)
+      const grave = root.getPropertyValue('--accent').trim() || '#2ae5ff'
+      const agudo = root.getPropertyValue('--accent-2').trim() || '#ffab40'
+
+      const degrade = g.createLinearGradient(0, 0, width, 0)
+      degrade.addColorStop(0, grave)
+      degrade.addColorStop(1, agudo)
+      g.fillStyle = degrade
+
       bins.forEach((value, index) => {
         const barHeight = (value / 255) * height
         g.globalAlpha = 0.35 + (value / 255) * 0.65

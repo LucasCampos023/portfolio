@@ -36,11 +36,19 @@ export function Tools() {
             return (
               <div key={status} className="border-t py-6">
                 <div className="mb-4 flex items-baseline gap-4">
+                  {/*
+                    Cada status tem sua tinta: ciano para o que já está em
+                    uso, âmbar para o que está em aprendizado, neutro para a
+                    fila. A cor carrega a informação, então a lista se lê de
+                    relance sem precisar do rótulo.
+                  */}
                   <span
                     className={
                       status === 'diario'
                         ? 'stamp text-[var(--accent)]'
-                        : 'stamp'
+                        : status === 'aprendendo'
+                          ? 'stamp text-[var(--accent-2)]'
+                          : 'stamp'
                     }
                   >
                     {statusLabel[status][lang]}

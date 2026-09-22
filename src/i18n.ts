@@ -86,8 +86,8 @@ const resources = {
       },
       about: {
         title: 'Onde eu estou agora',
-        p1: 'Estou no começo e não faz sentido fingir o contrário. O que tem aqui é o que existe: uma API em Express com MySQL, estudos de segurança em Python, uma interface de finanças em JavaScript puro e este site.',
-        p2: 'O que dá para abrir, fica aberto. Dá para ler o commit, ler o código e julgar pelo que está lá — não pela descrição. O resto está listado como privado, sem link, mas sem sumir da conta.',
+        p1: 'Meu trabalho agora são landing pages feitas para converter: cada seção existe para levar a uma ação, não para preencher espaço.',
+        p2: 'E não termina no visual. A intenção é que a essência da marca apareça na tela — reconhecível, e não mais um layout genérico.',
         note: 'Os números abaixo vêm da API do GitHub, ao vivo. Não são digitados à mão.',
         repos: 'repositórios públicos',
         since: 'conta criada em',
@@ -254,8 +254,8 @@ const resources = {
       },
       about: {
         title: 'Where I am right now',
-        p1: 'I am at the beginning and there is no point pretending otherwise. What is here is what exists: an Express API with MySQL, security studies in Python, a personal finance interface in vanilla JavaScript, and this site.',
-        p2: 'Whatever can be open, stays open. You can read the commits, read the code, and judge by what is there — not by the description. The rest is listed as private, without a link, but not hidden from the count.',
+        p1: 'My work right now is landing pages built to convert: every section exists to drive an action, not to fill space.',
+        p2: 'And it does not stop at the visual. The intent is for the brand to come through on screen — recognizable, not one more generic layout.',
         note: 'The numbers below come from the GitHub API, live. They are not typed in by hand.',
         repos: 'public repositories',
         since: 'account created',

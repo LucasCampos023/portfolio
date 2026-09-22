@@ -1,23 +1,35 @@
 @import 'tailwindcss';
 
 /* ---------------------------------------------------------------
-   Preto, cinza e ciano — mas o ciano é TINTA TÉCNICA, não neon:
-   entra em linhas de 1px, cotas, rótulos e estados ativos.
-   Nunca em gradiente de texto, nunca em glow difuso.
+   Duas tintas técnicas sobre base fria: ciano e âmbar.
+
+   O ciano continua sendo a tinta principal — linhas de 1px, cotas,
+   rótulos e estados ativos. O âmbar é o SEGUNDO sinal: entra onde
+   existe uma segunda categoria de informação (outra série no
+   gráfico, outro status, a outra ponta de um espectro). É o par
+   que instrumento de verdade usa: traço frio e lâmpada quente.
+
+   Nenhum dos dois em gradiente de texto ou glow difuso.
+
+   Os cinzas têm viés azul de propósito. Neutro puro (R=G=B) deixa
+   o escuro chapado; alguns pontos de azul dão profundidade sem a
+   tela virar "colorida".
 --------------------------------------------------------------- */
 @theme {
-  --color-ink: #0a0a0b;
-  --color-ink-2: #101013;
-  --color-ink-3: #16161a;
-  --color-line: #26262c;
-  --color-line-soft: #1b1b20;
+  --color-ink: #06080d;
+  --color-ink-2: #0c1018;
+  --color-ink-3: #141a25;
+  --color-line: #232b3a;
+  --color-line-soft: #171d28;
 
-  --color-chalk: #e8e8ea;
-  --color-ash: #8c8c96;
-  --color-ash-dim: #5c5c66;
+  --color-chalk: #e9ecf2;
+  --color-ash: #8a93a6;
+  --color-ash-dim: #6b7487;
 
-  --color-cyan: #00d9ff;
-  --color-cyan-dim: #0a7f96;
+  --color-cyan: #2ae5ff;
+  --color-cyan-dim: #0b7f9b;
+  --color-amber: #ffab40;
+  --color-amber-dim: #b3701f;
 
   --font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;
@@ -56,22 +68,27 @@
   --fg-dim: var(--color-ash);
   --fg-faint: var(--color-ash-dim);
   --accent: var(--color-cyan);
-  --on-accent: #00181e;
+  --accent-2: var(--color-amber);
+  --on-accent: #001419;
+  --on-accent-2: #241400;
   color-scheme: dark;
 }
 
-/* Tema claro = papel técnico. O ciano escurece para aguentar o branco. */
+/* Tema claro = papel técnico. As duas tintas escurecem para aguentar
+   o branco: ciano vira azul de caneta, âmbar vira marcação em terra. */
 :root[data-theme='light'] {
-  --bg: #eceae5;
-  --bg-raised: #f5f3ef;
-  --bg-sunk: #ddd9d2;
-  --rule: #c9c4ba;
-  --rule-soft: #d8d4cc;
-  --fg: #121214;
-  --fg-dim: #56565e;
-  --fg-faint: #85858e;
-  --accent: #006680;
+  --bg: #edeae3;
+  --bg-raised: #f6f4ef;
+  --bg-sunk: #dedacf;
+  --rule: #c7c1b4;
+  --rule-soft: #d9d4c9;
+  --fg: #14161a;
+  --fg-dim: #565c66;
+  --fg-faint: #6d7480;
+  --accent: #00697f;
+  --accent-2: #9a5100;
   --on-accent: #ffffff;
+  --on-accent-2: #ffffff;
   color-scheme: light;
 }
 

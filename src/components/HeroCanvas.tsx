@@ -52,6 +52,7 @@ const vertexShader = /* glsl */ `
 
 const fragmentShader = /* glsl */ `
   uniform vec3  uColor;
+  uniform vec3  uColor2;
   uniform float uFade;
 
   varying float vHeight;
@@ -62,10 +63,25 @@ const fragmentShader = /* glsl */ `
     float depthFade = smoothstep(9.0, -7.0, vDepth);
     float crest = smoothstep(-0.6, 1.9, vHeight);
 
+    // As duas tintas dividem o relevo pela altura: vale em ciano, crista
+    // puxando âmbar. A curva ao quadrado segura o âmbar só no topo — numa
+    // mistura linear ele invadiria o meio do terreno e as duas cores
+    // virariam um bege só.
+    vec3 tint = mix(uColor, uColor2, crest * crest);
+
     float alpha = depthFade * (0.10 + crest * 0.5) * uFade;
-    gl_FragColor = vec4(uColor, alpha);
+    gl_FragColor = vec4(tint, alpha);
   }
 `
+
+/** Lê um token do tema para o WebGL não repetir hex que o CSS já define. */
+function cssColor(name: string, fallback: string) {
+  if (typeof window === 'undefined') return fallback
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim()
+  return value || fallback
+}
 
 function Terrain() {
   const materialRef = useRef<THREE.ShaderMaterial>(null)
@@ -101,7 +117,8 @@ function Terrain() {
     () => ({
       uTime: { value: 0 },
       uPointer: { value: new THREE.Vector2(0, 0) },
-      uColor: { value: new THREE.Color('#00d9ff') },
+      uColor: { value: new THREE.Color(cssColor('--accent', '#2ae5ff')) },
+      uColor2: { value: new THREE.Color(cssColor('--accent-2', '#ffab40')) },
       uFade: { value: 1 },
     }),
     [],
@@ -130,10 +147,13 @@ function Terrain() {
       camera.lookAt(0, -0.4 - progress * 0.6, -4)
     }
 
-    // No papel claro o ciano elétrico some: escurece a linha e reforça o traço.
+    // No papel claro as tintas elétricas somem: o próprio CSS já troca os
+    // tokens por versões escuras, então basta reler e caminhar até lá.
     const dark = theme === 'dark'
     const color = material.uniforms.uColor.value as THREE.Color
-    color.lerp(new THREE.Color(dark ? '#00d9ff' : '#00596e'), 0.06)
+    const color2 = material.uniforms.uColor2.value as THREE.Color
+    color.lerp(new THREE.Color(cssColor('--accent', '#2ae5ff')), 0.06)
+    color2.lerp(new THREE.Color(cssColor('--accent-2', '#ffab40')), 0.06)
     material.uniforms.uFade.value = THREE.MathUtils.lerp(
       material.uniforms.uFade.value as number,
       dark ? 1 : 1.9,

@@ -23,7 +23,10 @@ export function Statement() {
   return (
     <section
       ref={inViewRef}
-      className="relative overflow-hidden border-b bg-[var(--accent)] py-20 text-[var(--on-accent)] sm:py-28"
+      // Âmbar, e não ciano, justamente por ser o único bloco de cor cheia da
+      // página: em ciano ele repetiria a tinta que já está em todo o resto e
+      // deixaria de ser uma quebra de ritmo.
+      className="relative overflow-hidden border-b bg-[var(--accent-2)] py-20 text-[var(--on-accent-2)] sm:py-28"
     >
       <div ref={ref} className="mx-auto max-w-6xl px-4 sm:px-8">
         <motion.div style={{ y }}>

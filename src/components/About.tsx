@@ -79,7 +79,16 @@ export function About() {
 
         <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
           <div>
+            {/*
+              A `key` por idioma é obrigatória aqui: o SplitText troca o
+              conteúdo deste h2 por spans de palavra, fora do controle do
+              React. Sem remontar o nó, a troca de idioma atualizaria um nó
+              de texto que já não existe, e o `split.revert()` da limpeza
+              ainda restauraria o texto antigo por cima — o título ficava
+              preso no idioma anterior.
+            */}
             <h2
+              key={i18n.language}
               ref={headingRef}
               className="display overflow-hidden text-4xl sm:text-6xl"
             >

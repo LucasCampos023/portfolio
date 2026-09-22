@@ -158,9 +158,11 @@ export function Pipeline() {
           </div>
 
           {/* Barra de progresso da narrativa inteira. */}
+          {/* A barra corre de ciano a âmbar: a cor na ponta diz o quanto
+              falta, sem precisar de número. */}
           <div className="mt-12 h-px w-full bg-[var(--rule)]">
             <div
-              className="h-px bg-[var(--accent)] transition-none"
+              className="h-px bg-gradient-to-r from-[var(--accent)] to-[var(--accent-2)] transition-none"
               style={{ width: `${progress * 100}%` }}
             />
           </div>

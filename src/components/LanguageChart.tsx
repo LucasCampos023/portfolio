@@ -43,8 +43,16 @@ export default function LanguageChart({
           {data.map((entry, index) => (
             <Cell
               key={entry.language}
-              // Só a linguagem mais usada recebe a tinta ciano.
-              fill={index === 0 ? 'var(--accent)' : 'var(--rule)'}
+              // Primeira em ciano, segunda em âmbar, o resto em linha neutra.
+              // Duas tintas bastam para separar o pódio do resto sem virar
+              // um gráfico de arco-íris, onde a cor deixa de significar algo.
+              fill={
+                index === 0
+                  ? 'var(--accent)'
+                  : index === 1
+                    ? 'var(--accent-2)'
+                    : 'var(--rule)'
+              }
             />
           ))}
         </Bar>
