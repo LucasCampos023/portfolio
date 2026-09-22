@@ -80,10 +80,10 @@ export function Hero() {
 
       <motion.div
         style={{ opacity: fade }}
-        className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-14 sm:px-8"
+        className="relative flex w-full flex-1 flex-col justify-center py-14"
       >
         <div>
-          <div className="mb-6 flex items-center gap-4">
+          <div className="mx-auto mb-6 flex max-w-6xl items-center gap-4 px-4 sm:px-8">
             <span className="stamp">
               {t('hero.sheet')} 01 / 06
             </span>
@@ -94,25 +94,31 @@ export function Hero() {
             </span>
           </div>
 
-          {/* O nome é o maior elemento da página. Sem gradiente: tinta sólida. */}
+          {/*
+            O nome sangra de ponta a ponta: sai do container e ocupa a largura
+            inteira da viewport. `clamp` deixa a letra crescer com a tela mas
+            trava nos extremos, e o tracking negativo fecha os vãos que
+            aparecem nesse corpo — em display grande o espacejamento padrão
+            da fonte fica largo demais.
+          */}
           <motion.h1
             style={{ y: yName }}
-            className="display text-[15vw] leading-[0.84] sm:text-[11vw] lg:text-[9.5rem]"
+            className="display w-full px-4 text-[clamp(3.2rem,15.2vw,15rem)] leading-[0.82] tracking-[-0.045em] sm:px-8"
           >
             <motion.span
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="block"
             >
               Lucas
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.7,
-                delay: 0.08,
+                duration: 0.8,
+                delay: 0.09,
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="block text-[var(--fg-dim)]"
@@ -123,7 +129,7 @@ export function Hero() {
 
           <motion.div
             style={{ y: yBlock }}
-            className="mt-10 grid gap-8 border-t pt-8 md:grid-cols-[1.1fr_1fr]"
+            className="mx-auto mt-10 grid max-w-6xl gap-8 border-t px-4 pt-8 sm:px-8 md:grid-cols-[1.1fr_1fr]"
           >
             <motion.p
               initial={{ opacity: 0 }}

@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { Nav } from '@/components/Nav'
+import { SmoothScroll } from '@/components/SmoothScroll'
+import { Statement } from '@/components/Statement'
 import { Cursor } from '@/components/Cursor'
 import { CommandPalette } from '@/components/CommandPalette'
 import { Hero } from '@/components/Hero'
@@ -9,6 +11,7 @@ import { About } from '@/components/About'
 import { Work } from '@/components/Work'
 import { Tools } from '@/components/Tools'
 import { Lab } from '@/components/Lab'
+import { Pipeline } from '@/components/Pipeline'
 import { Terminal } from '@/components/Terminal'
 import { Contact } from '@/components/Contact'
 import { Footer } from '@/components/Footer'
@@ -38,6 +41,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="relative min-h-screen">
+        <SmoothScroll />
         <Cursor />
         <Nav />
         <CommandPalette />
@@ -47,8 +51,10 @@ export default function App() {
           <Hero />
           <About />
           <Work />
+          <Statement />
           <Tools />
           <Lab />
+          <Pipeline />
           <Terminal />
           <Contact />
         </main>

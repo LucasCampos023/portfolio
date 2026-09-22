@@ -23,6 +23,47 @@ const resources = {
         title: 'Shell',
         sub: 'Um terminal de verdade, não uma imagem. Tem histórico nas setas, Tab completa o comando e `repos` lê o mesmo cache da API que a página usa.',
       },
+      statement: {
+        kicker: 'Como eu trabalho',
+        line: 'Código que explica a si mesmo vale mais que documentação que ninguém lê.',
+        sub: 'Nome que diz o que a coisa faz, estado que dá para prever, e comentário só onde a decisão não é óbvia pelo código.',
+      },
+      pipeline: {
+        kicker: 'Sob o capô',
+        title: 'O caminho até a sua tela',
+        steps: [
+          {
+            title: 'DNS',
+            detail: 'O navegador pergunta em qual servidor mora este endereço. A resposta fica em cache, então isso normalmente acontece só na primeira visita.',
+            metric: '~20 ms',
+          },
+          {
+            title: 'HTML',
+            detail: 'Chega um documento minúsculo. Ele não tem conteúdo nenhum: só a casca, as fontes e a tag que puxa o JavaScript.',
+            metric: '1,86 kB',
+          },
+          {
+            title: 'JavaScript',
+            detail: 'O pacote principal desce comprimido. Three.js e Recharts ficam de fora dele — entram depois, só quando a seção que precisa deles aparece.',
+            metric: '220 kB gzip',
+          },
+          {
+            title: 'React',
+            detail: 'A árvore de componentes é montada e o conteúdo aparece. O Konami Code conta esses nós ao vivo, se você quiser conferir.',
+            metric: '489 nós',
+          },
+          {
+            title: 'WebGL',
+            detail: 'A GPU compila o shader do terreno e passa a desenhar 6.664 segmentos de linha por quadro, com a deformação calculada no vertex shader.',
+            metric: '60 fps',
+          },
+          {
+            title: 'API',
+            detail: 'Por último, a página pergunta ao GitHub quais são os repositórios. É por isso que a lista nunca fica velha: ela não está escrita no código.',
+            metric: '2 repos',
+          },
+        ],
+      },
       xray: {
         title: 'Modo raio-X',
         nodes: 'nós no DOM',
@@ -148,6 +189,47 @@ const resources = {
       terminal: {
         title: 'Shell',
         sub: 'A real terminal, not a picture of one. Arrows walk the history, Tab completes, and `repos` reads the same API cache the page uses.',
+      },
+      statement: {
+        kicker: 'How I work',
+        line: 'Code that explains itself beats documentation nobody reads.',
+        sub: 'Names that say what the thing does, state you can predict, and comments only where the decision is not obvious from the code.',
+      },
+      pipeline: {
+        kicker: 'Under the hood',
+        title: 'The path to your screen',
+        steps: [
+          {
+            title: 'DNS',
+            detail: 'The browser asks which server this address lives on. The answer is cached, so this usually happens only on the first visit.',
+            metric: '~20 ms',
+          },
+          {
+            title: 'HTML',
+            detail: 'A tiny document arrives. It holds no content at all: just the shell, the fonts, and the tag that pulls the JavaScript.',
+            metric: '1.86 kB',
+          },
+          {
+            title: 'JavaScript',
+            detail: 'The main bundle comes down compressed. Three.js and Recharts are not in it — they load later, only when the section that needs them shows up.',
+            metric: '220 kB gzip',
+          },
+          {
+            title: 'React',
+            detail: 'The component tree is mounted and the content appears. The Konami Code counts those nodes live, if you want to check.',
+            metric: '489 nodes',
+          },
+          {
+            title: 'WebGL',
+            detail: 'The GPU compiles the terrain shader and starts drawing 6,664 line segments per frame, with the deformation computed in the vertex shader.',
+            metric: '60 fps',
+          },
+          {
+            title: 'API',
+            detail: 'Last, the page asks GitHub for the repositories. That is why the list never goes stale: it is not written in the code.',
+            metric: '2 repos',
+          },
+        ],
       },
       xray: {
         title: 'X-ray mode',
